@@ -279,4 +279,5 @@ def train(cno):
     kogptqa.save_parameters(savename)
 
 if __name__ == "__main__":
-    train()
+    for i in range(1, 4):
+        train(i)
