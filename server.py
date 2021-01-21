@@ -22,17 +22,17 @@ app = Flask(__name__)
 def answer(name):
     q = request.args.get('q')
     if name == 'lamama':
-        return jsonify({name : chat(chatbot1, q)})
+        return jsonify({name : chat(lamama, q)})
     elif name == 'panmingming':    
-        return jsonify({name : chat(chatbot2, q)})
+        return jsonify({name : chat(panmingming, q)})
     elif name == 'pulipy':
-        return jsonify({name : chat(chatbot3, q)})  
+        return jsonify({name : chat(pulipy, q)})  
 
 # 딥러닝에 필요한 파라미터들 정의
 parser = argparse.ArgumentParser(description='KoGPT2')
 
 # 훈련 데이터 세트로 학습
-parser.add_argument('--reload',
+parser.add_argument('--update',
                     action='store_true',
                     default=False)                    
 
@@ -101,28 +101,29 @@ def chat(model, sentence):
     return a.strip()
 
 #모델 파라미터 다운로드(현재는 git에서 다운로드)
-def reload():
+def update():
+    name_list = ['lamama', 'panmingming', 'pulipy']
     url = 'https://kogpt2test.s3.ap-northeast-2.amazonaws.com/'
-    for i in range(1, 4):
-        savename = str(i)+'.params'
+    for name in name_list:
+        savename = name + '.params'
         download.urlretrieve(url+savename, savename)      
 
 if __name__ == "__main__":
-    if opt.reload:
-        reload()
+    if opt.update:
+        update()
 
     tok_path = get_tokenizer()
     model, vocab = get_mxnet_kogpt2_model(ctx=ctx)
     tok = SentencepieceTokenizer(tok_path, num_best=0, alpha=0)
 
     #칫챗 모델 List
-    chatbot1 = KoGPT2Chat(model)
-    chatbot2 = KoGPT2Chat(model)
-    chatbot3 = KoGPT2Chat(model)
+    lamama = KoGPT2Chat(model)
+    panmingming = KoGPT2Chat(model)
+    pulipy = KoGPT2Chat(model)
 
     #모델별 파라미터 Load
-    chatbot1.load_parameters('lamama.params', ctx=ctx)
-    chatbot2.load_parameters('panmingming.params', ctx=ctx)
-    chatbot3.load_parameters('pulipy.params', ctx=ctx)
+    lamama.load_parameters('Dataset/lamama.params', ctx=ctx)
+    panmingming.load_parameters('Dataset/panmingming.params', ctx=ctx)
+    pulipy.load_parameters('Dataset/pulipy.params', ctx=ctx)
 
     app.run(host='0.0.0.0')
