@@ -18,18 +18,18 @@ from urllib import request as download
 app = Flask(__name__)
 
 #API
-@app.route('/<int:cno>')
-def answer(cno):
+@app.route('/<string:name>')
+def answer(name):
     q = request.args.get('q')
-    if cno == 1:
-        return jsonify({'1번 봇' : chat(chatbot1, q)})
-    elif cno == 2:    
-        return jsonify({'2번 봇' : chat(chatbot2, q)})
-    elif cno == 3:
-        return jsonify({'3번 봇' : chat(chatbot3, q)})  
+    if name == 'lamama':
+        return jsonify({name : chat(chatbot1, q)})
+    elif name == 'panmingming':    
+        return jsonify({name : chat(chatbot2, q)})
+    elif name == 'pulipy':
+        return jsonify({name : chat(chatbot3, q)})  
 
 # 딥러닝에 필요한 파라미터들 정의
-parser = argparse.ArgumentParser(description='Simsimi based on KoGPT-2')
+parser = argparse.ArgumentParser(description='KoGPT2')
 
 # 훈련 데이터 세트로 학습
 parser.add_argument('--reload',
@@ -121,8 +121,8 @@ if __name__ == "__main__":
     chatbot3 = KoGPT2Chat(model)
 
     #모델별 파라미터 Load
-    chatbot1.load_parameters('1.params', ctx=ctx)
-    chatbot2.load_parameters('2.params', ctx=ctx)
-    chatbot3.load_parameters('3.params', ctx=ctx)
+    chatbot1.load_parameters('lamama.params', ctx=ctx)
+    chatbot2.load_parameters('panmingming.params', ctx=ctx)
+    chatbot3.load_parameters('pulipy.params', ctx=ctx)
 
     app.run(host='0.0.0.0')

@@ -171,7 +171,7 @@ else:
     ctx = mx.cpu()
 
 
-def train(cno):
+def train(name):
     tok_path = get_tokenizer()
     # /root/kogpt2/kogpt2_news_wiki_ko_cased_818bfa919d.spiece
     model, vocab = get_mxnet_kogpt2_model(ctx=ctx)
@@ -180,8 +180,8 @@ def train(cno):
 
     # tok = SentencepieceTokenizer(tok_path, num_best=0, alpha=0)
 
-    loadname = str(cno) + '.csv'
-    savename = str(cno) + '.params'
+    loadname = name + '.csv'
+    savename = name + '.params'
     # 학습데이터(.csv) 파일 Read
     data = pd.read_csv(loadname)
 
@@ -279,5 +279,6 @@ def train(cno):
     kogptqa.save_parameters(savename)
 
 if __name__ == "__main__":
-    for i in range(1, 4):
-        train(i)
+    name_list = ['lamama', 'panmingming', 'pulipy']
+    for name in name_list:
+        train(name)
