@@ -182,7 +182,7 @@ def train(name):
     # tok = SentencepieceTokenizer(tok_path, num_best=0, alpha=0)
 
     loadname = 'DataSet/' + name + '.csv'
-    savename = 'DataSet/' + name + '.params'
+    savename = name + '.params'
     # 학습데이터(.csv) 파일 Read
     data = pd.read_csv(loadname)
 
@@ -303,4 +303,5 @@ if __name__ == "__main__":
     name_list = ['lamama', 'panmingming', 'pulipy']
     for name in name_list:
         train(name)
+    for name in name_list:
         s3.upload_file(name+'.params', 'kogpt2test', name+'.params')
