@@ -14,6 +14,7 @@ from mxnet.gluon import nn
 
 from flask import Flask, request, jsonify
 from urllib import request as download
+import boto3
 
 app = Flask(__name__)
 
@@ -106,11 +107,33 @@ def update():
     url = 'https://kogpt2test.s3.ap-northeast-2.amazonaws.com/'
     for name in name_list:
         savename = name + '.params'
-        download.urlretrieve(url+savename, savename)      
+        download.urlretrieve(url+savename, savename)
+
+def role_switch():
+    sts_client = boto3.client('sts')
+
+    assumed_role_object=sts_client.assume_role(
+        RoleArn="arn:aws:iam::248239598373:role/DeveloperRole",
+        RoleSessionName="RoleSession1"
+    )
+
+    credentials=assumed_role_object['Credentials']
+
+    s3=boto3.client(
+        's3',
+        aws_access_key_id=credentials['AccessKeyId'],
+        aws_secret_access_key=credentials['SecretAccessKey'],
+        aws_session_token=credentials['SessionToken']
+    )
+
+    return s3
 
 if __name__ == "__main__":
     if opt.update:
-        update()
+        s3 = role_switch()
+        name_list = ['lamama', 'panmingming', 'pulipy']
+        for name in name_list:
+            s3.download_file('kogpt2test', name+'.params', name+'.params')
 
     tok_path = get_tokenizer()
     model, vocab = get_mxnet_kogpt2_model(ctx=ctx)

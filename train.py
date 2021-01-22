@@ -13,6 +13,7 @@ from mxnet import gluon, nd
 from mxnet.gluon import nn
 
 from urllib import request as download
+import boto3
 
 # 딥러닝에 필요한 파라미터들 정의
 parser = argparse.ArgumentParser(description='Simsimi based on KoGPT-2')
@@ -278,7 +279,28 @@ def train(name):
     logging.info('모델 생성 완료 {}'.format(savename))
     kogptqa.save_parameters(savename)
 
+def role_switch():
+    sts_client = boto3.client('sts')
+
+    assumed_role_object=sts_client.assume_role(
+        RoleArn="arn:aws:iam::248239598373:role/DeveloperRole",
+        RoleSessionName="RoleSession1"
+    )
+
+    credentials=assumed_role_object['Credentials']
+
+    s3=boto3.client(
+        's3',
+        aws_access_key_id=credentials['AccessKeyId'],
+        aws_secret_access_key=credentials['SecretAccessKey'],
+        aws_session_token=credentials['SessionToken']
+    )
+
+    return s3
+
 if __name__ == "__main__":
+    s3 = role_switch()
     name_list = ['lamama', 'panmingming', 'pulipy']
     for name in name_list:
         train(name)
+        s3.upload_file(name+'.params', 'kogpt2test', name+'.params')
