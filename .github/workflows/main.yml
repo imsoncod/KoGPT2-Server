@@ -26,16 +26,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
           
-      - name: test
-        run: |
-          ls
-          
-      - name: Role Switch
-        uses: canastro/copy-file-action@master
-        with:
-          source: config
-          target: .aws/config 
-          
       - name: Create Spot Instance Request
         run: |
-          aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json --profile DeveloperRole
+          aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json
