@@ -27,8 +27,10 @@ jobs:
           aws-region: ap-northeast-2
           
       - name: Role Switch
-        run: |
-          cp config .aws/config
+        uses: canastro/copy-file-action@master
+        with:
+          src_path: config
+          dst_path: .aws/config 
           
       - name: Create Spot Instance Request
         run: |
