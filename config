@@ -1,0 +1,4 @@
+[profile DeveloperRole]
+    role_arn = arn:aws:iam::248239598373:role/DeveloperRole
+    source_profile = default
+    region = ap-northeast-2
