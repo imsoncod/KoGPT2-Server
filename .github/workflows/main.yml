@@ -28,7 +28,7 @@ jobs:
           
       - name: Role Switch
         run: |
-          cp config ./.aws/config
+          cp config .aws/config
           
       - name: Create Spot Instance Request
         run: |
