@@ -26,6 +26,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
           
+      - name: test
+        run: |
+          cd /home/ubuntu/.aws
+          ls
+          
       - name: Create Spot Instance Request
         run: |
           aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json
