@@ -26,6 +26,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
           
+      - name: test
+        run: |
+          ls
+          
       - name: Role Switch
         uses: canastro/copy-file-action@master
         with:
