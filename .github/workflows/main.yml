@@ -28,8 +28,7 @@ jobs:
           
       - name: test
         run: |
-          cd
-          ls
+          find / -name config
           
       - name: Create Spot Instance Request
         run: |
