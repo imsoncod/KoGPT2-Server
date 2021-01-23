@@ -28,7 +28,7 @@ jobs:
           
       - name: test
         run: |
-          cd /home/runner
+          cd /home/runner/work
           ls
           
       - name: Create Spot Instance Request
