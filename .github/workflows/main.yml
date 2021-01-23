@@ -28,7 +28,7 @@ jobs:
           
       - name: test
         run: |
-          cd /home/runner/work/KoGPT2-Server/KoGPT2-Server
+          cd
           ls
           
       - name: Create Spot Instance Request
