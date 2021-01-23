@@ -29,8 +29,8 @@ jobs:
       - name: Role Switch
         uses: canastro/copy-file-action@master
         with:
-          src_path: config
-          dst_path: .aws/config 
+          source: config
+          target: .aws/config 
           
       - name: Create Spot Instance Request
         run: |
