@@ -28,7 +28,7 @@ jobs:
           
       - name: test
         run: |
-          cd /home/ubuntu/.aws
+          cd /home/runner
           ls
           
       - name: Create Spot Instance Request
