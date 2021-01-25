@@ -2,14 +2,15 @@
     "IamFleetRole": "arn:aws:iam::248239598373:role/aws-ec2-spot-fleet-tagging-role",
     "AllocationStrategy": "capacityOptimized",
     "TargetCapacity": 1,
-    "ValidFrom": "2021-01-22T05:11:32Z",
-    "ValidUntil": "2022-01-22T05:11:32Z",
-    "SpotPrice": "1.465",
+    "ValidFrom": "2021-01-25T04:43:22Z",
+    "ValidUntil": "2022-01-25T04:43:22Z",
+    "SpotPrice": "11.72",
     "TerminateInstancesWithExpiration": true,
     "LaunchSpecifications": [
         {
             "ImageId": "ami-0e8d2ca52b90f5823",
             "InstanceType": "p2.8xlarge",
+            "SubnetId": "subnet-49ae0c22, subnet-29990652, subnet-932630df, subnet-d87f9f87",
             "KeyName": "koGPT-2",
             "BlockDeviceMappings": [
                 {
@@ -23,109 +24,13 @@
                     }
                 }
             ],
-            "SpotPrice": "1.465",
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93",
-            "NetworkInterfaces": [
+            "SpotPrice": "11.72",
+            "SecurityGroups": [
                 {
-                    "DeviceIndex": 0,
-                    "SubnetId": "subnet-49ae0c22",
-                    "DeleteOnTermination": true,
-                    "Groups": [
-                        "sg-0db9ec9a607e06952"
-                    ],
-                    "AssociatePublicIpAddress": false
-                }
-            ]
-        },
-        {
-            "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.8xlarge",
-            "KeyName": "koGPT-2",
-            "BlockDeviceMappings": [
-                {
-                    "DeviceName": "/dev/sda1",
-                    "Ebs": {
-                        "DeleteOnTermination": true,
-                        "SnapshotId": "snap-03ff9ad0f8e1b4dcf",
-                        "VolumeSize": 100,
-                        "VolumeType": "gp2",
-                        "Encrypted": false
-                    }
+                    "GroupId": "sg-0db9ec9a607e06952"
                 }
             ],
-            "SpotPrice": "1.465",
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93",
-            "NetworkInterfaces": [
-                {
-                    "DeviceIndex": 0,
-                    "SubnetId": "subnet-29990652",
-                    "DeleteOnTermination": true,
-                    "Groups": [
-                        "sg-0db9ec9a607e06952"
-                    ],
-                    "AssociatePublicIpAddress": false
-                }
-            ]
-        },
-        {
-            "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.8xlarge",
-            "KeyName": "koGPT-2",
-            "BlockDeviceMappings": [
-                {
-                    "DeviceName": "/dev/sda1",
-                    "Ebs": {
-                        "DeleteOnTermination": true,
-                        "SnapshotId": "snap-03ff9ad0f8e1b4dcf",
-                        "VolumeSize": 100,
-                        "VolumeType": "gp2",
-                        "Encrypted": false
-                    }
-                }
-            ],
-            "SpotPrice": "1.465",
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93",
-            "NetworkInterfaces": [
-                {
-                    "DeviceIndex": 0,
-                    "SubnetId": "subnet-932630df",
-                    "DeleteOnTermination": true,
-                    "Groups": [
-                        "sg-0db9ec9a607e06952"
-                    ],
-                    "AssociatePublicIpAddress": false
-                }
-            ]
-        },
-        {
-            "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.8xlarge",
-            "KeyName": "koGPT-2",
-            "BlockDeviceMappings": [
-                {
-                    "DeviceName": "/dev/sda1",
-                    "Ebs": {
-                        "DeleteOnTermination": true,
-                        "SnapshotId": "snap-03ff9ad0f8e1b4dcf",
-                        "VolumeSize": 100,
-                        "VolumeType": "gp2",
-                        "Encrypted": false
-                    }
-                }
-            ],
-            "SpotPrice": "1.465",
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93",
-            "NetworkInterfaces": [
-                {
-                    "DeviceIndex": 0,
-                    "SubnetId": "subnet-d87f9f87",
-                    "DeleteOnTermination": true,
-                    "Groups": [
-                        "sg-0db9ec9a607e06952"
-                    ],
-                    "AssociatePublicIpAddress": false
-                }
-            ]
+            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93"
         }
     ],
     "Type": "request"
