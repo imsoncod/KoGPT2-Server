@@ -29,10 +29,7 @@ jobs:
       - name: Switch Role 1
         run: |
           aws configure set role_arn arn:aws:iam::248239598373:role/DeveloperRole --profile DeveloperRole
-      - name: Switch Role 2    
-        run: |
-          aws configure set source_profile default --profile DeveloperRole
-      - name: Switch Role 3
+      - name: Switch Role 2
         run: |  
           aws configure set region ap-northeast-2 --profile DeveloperRole
           
