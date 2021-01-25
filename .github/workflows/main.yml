@@ -26,9 +26,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
      
-      - name: test
-        run: |
-          find / -name credentials
+      - uses: clowdhaus/aws-github-actions/s3_sync@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+          assume-role: true
+          role-arn: arn:aws:iam::248239598373:role/DeveloperRole
           
       - name: Create Spot Instance Request
         run: |
