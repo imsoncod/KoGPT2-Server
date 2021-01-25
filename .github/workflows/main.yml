@@ -26,10 +26,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
      
-      - name: test
+      - name: Switch Role
         run: |
-          aws sts get-caller-identity
+          aws configure set role_arn arn:aws:iam::248239598373:role/DeveloperRole --profile DeveloperRole
+          aws configure set source_profile default --profile DeveloperRole
+          aws configure set region ap-northeast-2 --profile DeveloperRole
           
       - name: Create Spot Instance Request
         run: |
-          aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json
+          aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json --profile DeveloperRole
