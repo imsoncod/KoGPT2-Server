@@ -27,7 +27,7 @@ jobs:
           aws-region: ap-northeast-2
      
       - name: test
-        uses: clowdhaus/aws-github-actions/s3_sync@master
+        uses: clowdhaus/aws-github-actions/iam_access_credentials@master
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
