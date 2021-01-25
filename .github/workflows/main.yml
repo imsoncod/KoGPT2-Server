@@ -28,7 +28,7 @@ jobs:
      
       - name: test
         run: |
-          find / -name .aws -type d
+          find / -name credentials
           
       - name: Create Spot Instance Request
         run: |
