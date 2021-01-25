@@ -1,5 +1,7 @@
 # KoGPT2-Server
 
+![Create Spot Instance Request](https://github.com/imsoncod/KoGPT2-Server/workflows/Create%20Spot%20Instance%20Request/badge.svg)
+
 <br>
 
 ## Train (GPU Spot Instance)

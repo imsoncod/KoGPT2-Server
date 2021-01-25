@@ -101,9 +101,11 @@ def chat(model, sentence):
     #print("챗봇 응답 : {}".format(a.strip()))    
     return a.strip()
 
+#챗봇 Name List
+name_list = ['lamama', 'panmingming', 'pulipy']
+
 #모델 파라미터 다운로드(현재는 git에서 다운로드)
 def update():
-    name_list = ['lamama', 'panmingming', 'pulipy']
     url = 'https://kogpt2test.s3.ap-northeast-2.amazonaws.com/'
     for name in name_list:
         savename = name + '.params'
@@ -131,7 +133,6 @@ def role_switch():
 if __name__ == "__main__":
     if opt.update:
         s3 = role_switch()
-        name_list = ['lamama', 'panmingming', 'pulipy']
         for name in name_list:
             s3.download_file('kogpt2test', name+'.params', name+'.params')
 

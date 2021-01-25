@@ -9,7 +9,7 @@
     "LaunchSpecifications": [
         {
             "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.xlarge",
+            "InstanceType": "p2.8xlarge",
             "KeyName": "koGPT-2",
             "BlockDeviceMappings": [
                 {
@@ -39,7 +39,7 @@
         },
         {
             "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.xlarge",
+            "InstanceType": "p2.8xlarge",
             "KeyName": "koGPT-2",
             "BlockDeviceMappings": [
                 {
@@ -69,7 +69,7 @@
         },
         {
             "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.xlarge",
+            "InstanceType": "p2.8xlarge",
             "KeyName": "koGPT-2",
             "BlockDeviceMappings": [
                 {
@@ -99,7 +99,7 @@
         },
         {
             "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.xlarge",
+            "InstanceType": "p2.8xlarge",
             "KeyName": "koGPT-2",
             "BlockDeviceMappings": [
                 {
