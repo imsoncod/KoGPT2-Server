@@ -19,17 +19,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2
-     
-      - name: test
+      - name: Configure AWS_ACCESS_KEY_ID
         run: |
-          find / -name .aws -type d
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+      
+      - name: Configure AWS_SECRET_ACCESS_KEY
+        run: |
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+     
+      - name: Switch Role 1
+        run: |
+          aws configure set role_arn arn:aws:iam::248239598373:role/DeveloperRole --profile DeveloperRole
+      - name: Switch Role 2
+        run: |
+          aws configure set source_profile default --profile DeveloperRole
+      - name: Switch Role 3
+        run: |  
+          aws configure set region ap-northeast-2 --profile DeveloperRole
           
       - name: Create Spot Instance Request
         run: |
-          aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json
+          aws ec2 request-spot-fleet --spot-fleet-request-config file://config.json --profile DeveloperRole
