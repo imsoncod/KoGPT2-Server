@@ -33,8 +33,8 @@ parser.add_argument('--max-seq-len',
 # 1 iteration에 사용되는 데이터 개수
 parser.add_argument('--batch-size',
                     type=int,
-                    default=64,
-                    help='batch size for training (default: 64)')
+                    default=16,
+                    help='batch size for training (default: 16)')
 
 # 사용자의 요청에 응답
 parser.add_argument('--chat',
