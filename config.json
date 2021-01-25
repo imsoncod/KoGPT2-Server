@@ -2,8 +2,8 @@
     "IamFleetRole": "arn:aws:iam::248239598373:role/aws-ec2-spot-fleet-tagging-role",
     "AllocationStrategy": "capacityOptimized",
     "TargetCapacity": 1,
-    "ValidFrom": "2021-01-25T05:30:20Z",
-    "ValidUntil": "2022-01-25T05:30:20Z",
+    "ValidFrom": "2021-01-25T05:44:27Z",
+    "ValidUntil": "2022-01-25T05:44:27Z",
     "SpotPrice": "1.465",
     "TerminateInstancesWithExpiration": true,
     "LaunchSpecifications": [
@@ -30,7 +30,7 @@
                     "GroupId": "sg-0db9ec9a607e06952"
                 }
             ],
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgdGVtcAoKY2htb2QgLVIgNzc3IC90ZW1wCgpjZCB0ZW1wCgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93"
+            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpzdSB1YnVudHUKCmNkCgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93"
         }
     ],
     "Type": "request",
