@@ -19,12 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2
+      - name: Configure AWS_ACCESS_KEY_ID
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+      
+      - name: Configure AWS_SECRET_ACCESS_KEY
+        run: |
+          aws configure set aws_secret_access_key ${{ secrets.AWS_ACCESS_KEY_ID }}
      
       - name: Switch Role 1
         run: |
