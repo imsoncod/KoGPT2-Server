@@ -2,14 +2,14 @@
     "IamFleetRole": "arn:aws:iam::248239598373:role/aws-ec2-spot-fleet-tagging-role",
     "AllocationStrategy": "capacityOptimized",
     "TargetCapacity": 1,
-    "ValidFrom": "2021-01-25T04:43:22Z",
-    "ValidUntil": "2022-01-25T04:43:22Z",
-    "SpotPrice": "11.72",
+    "ValidFrom": "2021-01-25T05:30:20Z",
+    "ValidUntil": "2022-01-25T05:30:20Z",
+    "SpotPrice": "1.465",
     "TerminateInstancesWithExpiration": true,
     "LaunchSpecifications": [
         {
             "ImageId": "ami-0e8d2ca52b90f5823",
-            "InstanceType": "p2.8xlarge",
+            "InstanceType": "p2.xlarge",
             "SubnetId": "subnet-49ae0c22, subnet-29990652, subnet-932630df, subnet-d87f9f87",
             "KeyName": "koGPT-2",
             "BlockDeviceMappings": [
@@ -24,14 +24,15 @@
                     }
                 }
             ],
-            "SpotPrice": "11.72",
+            "SpotPrice": "1.465",
             "SecurityGroups": [
                 {
                     "GroupId": "sg-0db9ec9a607e06952"
                 }
             ],
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93"
+            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgdGVtcAoKY2htb2QgLVIgNzc3IC90ZW1wCgpjZCB0ZW1wCgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93"
         }
     ],
-    "Type": "request"
+    "Type": "request",
+    "SpotMaxTotalPrice": "0.9"
 }
