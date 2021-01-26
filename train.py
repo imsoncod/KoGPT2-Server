@@ -301,7 +301,12 @@ def role_switch():
 if __name__ == "__main__":
     s3 = role_switch()
     name_list = ['lamama', 'panmingming', 'pulipy']
-    for name in name_list:
-        train(name)
+
+    #학습
+    train('lamama')
+    train('panmingming')
+    train('pulipy')
+
+    #S3 업로드
     for name in name_list:
         s3.upload_file(name+'.params', 'kogpt2test', name+'.params')

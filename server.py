@@ -17,6 +17,7 @@ from urllib import request as download
 import boto3
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 #API
 @app.route('/<string:name>')
@@ -146,8 +147,8 @@ if __name__ == "__main__":
     pulipy = KoGPT2Chat(model)
 
     #모델별 파라미터 Load
-    lamama.load_parameters('DataSet/lamama.params', ctx=ctx)
-    panmingming.load_parameters('DataSet/panmingming.params', ctx=ctx)
-    pulipy.load_parameters('DataSet/pulipy.params', ctx=ctx)
+    lamama.load_parameters('lamama.params', ctx=ctx)
+    panmingming.load_parameters('panmingming.params', ctx=ctx)
+    pulipy.load_parameters('pulipy.params', ctx=ctx)
 
     app.run(host='0.0.0.0')
