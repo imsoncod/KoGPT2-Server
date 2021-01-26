@@ -14,6 +14,7 @@ from mxnet.gluon import nn
 
 from urllib import request as download
 import boto3
+import gc
 
 # 딥러닝에 필요한 파라미터들 정의
 parser = argparse.ArgumentParser(description='Simsimi based on KoGPT-2')
@@ -264,6 +265,7 @@ def train(name):
                 step_loss = 0
     logging.info('모델 생성 완료 {}'.format(savename))
     kogptqa.save_parameters(savename)
+    del kogptqa
 
 def role_switch():
     sts_client = boto3.client('sts')
@@ -291,6 +293,8 @@ if __name__ == "__main__":
     #학습
     for name in name_list:
         train(name)
+        gc.collect()
+        ctx.empty_cache()
 
     #S3 업로드
     for name in name_list:
