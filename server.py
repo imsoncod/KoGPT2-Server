@@ -76,7 +76,7 @@ def chat(model, sentence):
     a_tok = []
     while 1:
         input_ids = mx.nd.array([vocab[U_TKN]] + vocab[q_tok] +
-                                    vocab[EOS, SENT]
+                                    vocab[EOS, SENT] + 
                                     vocab[EOS, S_TKN] +
                                     vocab[a_tok]).expand_dims(axis=0)
         pred = model(input_ids.as_in_context(ctx))
