@@ -43,13 +43,12 @@ opt = parser.parse_args()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-U_TKN = '<Question>'
-S_TKN = '<Answer>'
+U_TKN = '<usr>'
+S_TKN = '<sys>'
 BOS = '<s>'
 EOS = '</s>'
 MASK = '<unused0>'
-# SENT = '<unused1>'
-
+SENT = '<unused1>'
 
 class KoGPT2Chat(nn.HybridBlock):
     def __init__(self, kogpt2, prefix=None, params=None):
@@ -70,36 +69,26 @@ else:
 
 def chat(model, sentence):
     q = sentence
-    #q = input('사용자 입력 : ').strip()
     if q == 'quit':
         return
     q_tok = tok(q)
-    #print('q_tok : ', q_tok)
     a = ''
     a_tok = []
-    ##############
-    #Predict 과정#
-    ##############
     while 1:
-        input_ids = mx.nd.array([vocab['<Question>']] + vocab[q_tok] +
-                                vocab['</s>', '<unused1>'] + 
-                                #vocab[sent_tokens] +
-                                vocab['</s>', '<Answer>'] +
-                                vocab[a_tok]).expand_dims(axis=0)
+        input_ids = mx.nd.array([vocab[U_TKN]] + vocab[q_tok] +
+                                    vocab[EOS, SENT]
+                                    vocab[EOS, S_TKN] +
+                                    vocab[a_tok]).expand_dims(axis=0)
         pred = model(input_ids.as_in_context(ctx))
             
         gen = vocab.to_tokens(
             mx.nd.argmax(
                 pred,
                 axis=-1).squeeze().astype('int').asnumpy().tolist())[-1]
-        #print('gen', gen)
         if gen == EOS:
             break
         a += gen.replace('▁', ' ')
-        #print('lsa : ', a)
         a_tok = tok(a)
-        #print('a_tok : ', tok(a))
-    #print("챗봇 응답 : {}".format(a.strip()))    
     return a.strip()
 
 #챗봇 Name List

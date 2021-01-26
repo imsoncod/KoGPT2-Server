@@ -33,7 +33,7 @@ parser.add_argument('--max-seq-len',
 # 1 iteration에 사용되는 데이터 개수
 parser.add_argument('--batch-size',
                     type=int,
-                    default=16,
+                    default=64,
                     help='batch size for training (default: 16)')
 
 # 사용자의 요청에 응답
@@ -41,18 +41,6 @@ parser.add_argument('--chat',
                     action='store_true',
                     default=False,
                     help='response generation on given user input')
-
-# 감정을 나타내는 번호
-# parser.add_argument('--sentiment',
-#                     type=str,
-#                     default='0',
-#                     help='sentiment for system. 0 is neutral, 1 is negative, 2 is positive.')
-
-# 채팅시작을 위한 모델 파라미터
-parser.add_argument('--model_params',
-                    type=str,
-                    default='kogpt2_chat.params',
-                    help='model binary for starting chat')
 
 # 훈련 데이터 세트로 학습
 parser.add_argument('--reload',
@@ -70,12 +58,12 @@ opt = parser.parse_args()
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-U_TKN = '<Question>'
-S_TKN = '<Answer>'
+U_TKN = '<usr>'
+S_TKN = '<sys>'
 BOS = '<s>'
 EOS = '</s>'
 MASK = '<unused0>'
-# SENT = '<unused1>'
+#SENT = '<unused1>'
 
 
 class ChatDataset(gluon.data.Dataset):
@@ -84,12 +72,12 @@ class ChatDataset(gluon.data.Dataset):
         self._tok_path = tok_path
         self.tokenizer = None
         self.first = True
-        self.q_token = '<Question>'
-        self.a_token = '<Answer>'
-        # self.sent_token = '<unused1>'
-        self.bos = '<s>'
-        self.eos = '</s>'
-        self.maskt = '<unused0>'
+        self.q_token = U_TKN
+        self.a_token = S_TKN
+        #self.sent_token = SENT
+        self.bos = BOS
+        self.eos = EOS
+        self.maskt = MASK
         self.vocab = vocab
         self.max_len = max_len
         self.padder = nlp.data.PadSequence(
@@ -105,10 +93,8 @@ class ChatDataset(gluon.data.Dataset):
         if self.tokenizer is None:
             self._activate_sp()
         turn = self._data.iloc[idx]
-        # turn : Q : 내 마음을 알아줬으면 A : 말을 해야 알거예요. label : 0
-        q = turn['Q'] # 내 마음을 알아줬으면
-        a = turn['A'] # 말을 해야 알거예요
-        # sentiment = str(turn['label']) # 0
+        q = turn['Q']
+        a = turn['A']
         q_toked = [
             self.q_token,
         ] + self.tokenizer(q) + [
@@ -303,9 +289,8 @@ if __name__ == "__main__":
     name_list = ['lamama', 'panmingming', 'pulipy']
 
     #학습
-    train('lamama')
-    train('panmingming')
-    train('pulipy')
+    for name in name_list:
+        train(name)
 
     #S3 업로드
     for name in name_list:
