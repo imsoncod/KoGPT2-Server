@@ -2,13 +2,13 @@
     "IamFleetRole": "arn:aws:iam::248239598373:role/aws-ec2-spot-fleet-tagging-role",
     "AllocationStrategy": "capacityOptimized",
     "TargetCapacity": 1,
-    "ValidFrom": "2021-01-25T05:44:27Z",
-    "ValidUntil": "2022-01-25T05:44:27Z",
+    "ValidFrom": "2021-01-26T08:39:10Z",
+    "ValidUntil": "2022-01-26T08:39:10Z",
     "SpotPrice": "1.465",
     "TerminateInstancesWithExpiration": true,
     "LaunchSpecifications": [
         {
-            "ImageId": "ami-0e8d2ca52b90f5823",
+            "ImageId": "ami-097ac2a89993ee105",
             "InstanceType": "p2.xlarge",
             "SubnetId": "subnet-49ae0c22, subnet-29990652, subnet-932630df, subnet-d87f9f87",
             "KeyName": "koGPT-2",
@@ -17,7 +17,7 @@
                     "DeviceName": "/dev/sda1",
                     "Ebs": {
                         "DeleteOnTermination": true,
-                        "SnapshotId": "snap-03ff9ad0f8e1b4dcf",
+                        "SnapshotId": "snap-0935c4fd1e3777674",
                         "VolumeSize": 100,
                         "VolumeType": "gp2",
                         "Encrypted": false
@@ -30,9 +30,8 @@
                     "GroupId": "sg-0db9ec9a607e06952"
                 }
             ],
-            "UserData": "IyEgL2Jpbi9iYXNoCgpzdWRvIHN1CgpjZCAvaG9tZS91YnVudHUKCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdAoKY2htb2QgLVIgNzc3IC9zcG90CgpzdSB1YnVudHUKCmNkCgpjZCBzcG90CgpDVURBX1ZJU0lCTEVfREVWSUNFUz0wIHB5dGhvbiB0cmFpbi5weQoKc2h1dGRvd24gbm93"
+            "UserData": "IyEgL2Jpbi9iYXNoCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaW1zb25jb2QvS29HUFQyLVNlcnZlci5naXQgc3BvdApjaG1vZCAtUiA3Nzcgc3BvdApjZCBzcG90CnB5dGhvbjMgdHJhaW4ucHkKc2h1dGRvd24gbm93"
         }
     ],
-    "Type": "request",
-    "SpotMaxTotalPrice": "0.9"
+    "Type": "request"
 }
